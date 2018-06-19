@@ -1,48 +1,99 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+      
+       <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">-->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="css/bootstrap1.css">
+        <link rel="stylesheet" href="css/style.css">
+        
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div class="card" >
+            <div class="card-header">
+                <div class="row" style="height: 5vh;">
+                    <div class="col-8 col-sm-10 col-md-10 col-lg-10"> 
+                        <h3 class="panel-title"><img  href="#" src="img/logo/logo.png" srcset="img/logo/logo@2x.png 2x,img/logo/logo@3x.png 3x" ></h3> 
+                    </div>
+                    <div class="col-2 col-sm-1 col-md-1 col-lg-1 "><a id="descargar" href="#" ><img  src="img/descargar.png"></a> </div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 "><a id="compartir"  href="#"><img src="img/compartir.png"></a> </div>  
+                </div>
             </div>
-        </div>
+            <center>
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" >  
+                        <div class="row " style="height: 8vh;">
+                            <div class="col-1"></div>  
+                            <div class="col-2 "><a id="nuevo" href="#tab_default_0" data-toggle="tab"> <img  src="img/nuevo.png"></a><p class="texto">Nuevo<p></div>
+                            <div class="col-2 "><a id="editar" href="#" > <img src="img/inactivo/editar.png"></a><p class="texto">Editar<p></div>
+                            <div class="col-2 "><a id="agrupar"  href="#" > <img src="img/agrupar.png"></a><p class="texto">Agrupar<p></div>
+                            <div class="col-2 "><a id="desagrupar" href="#" > <img src="img/desagrupar.png"></a><p class="texto">Desagrupar<p></div>
+                            <div class="col-2 "><a id="eliminar" href="#"><img src="img/eliminar.svg"></a></div>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class=" col-md-1 col-lg-2 "></div> 
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-8" id="contenedor" style="height: 45vh;">
+                        <img id="image" class="img-responsive" style="display:none;" />    
+                        <canvas id="canvas" style="border:1px  solid #AAA;  border-style:dashed;" > Tu dispositivo no soporta canvas </canvas> 
+                    </div>
+                    <div class=" col-md-1 col-lg-2 "></div>
+                </div>
+                
+                <div class="tab-content">
+                    <div class="tab-pane active" id="divinicio"  >
+                        <div class="row" style="height: 15vh;">
+                            <div class="col-6"><input type="file" name="file-5[]" id="file-5" class="inputfile inputfile-4 invisible" style="width:5px" data-multiple-caption="{count} files selected" multiple />
+                                <label for="file-5"><img src="img/subirfondo.svg"> <p class="texto">Subir Fondo</p> </label>
+                            </div>
+                            <div class="col-6">
+                                <input type="file" name="file-6[]" id="file-6" class="inputfile inputfile-5 invisible" style="width:5px" data-multiple-caption="{count} files selected" multiple /><label for="file-6"><img src="img/subirimagen.svg"><p class="texto">Subir Imagen</p></label>
+                            </div>
+                        </div>             
+                    </div>
+                </div> 
+                <hr>
+                 <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-2"><a href="#"><img src="img/activo/inicio.png"> </a><p class="texto">Inicio</p></div>
+                    <div class="col-2"><a href="#"><img src="img/inactivo/fondos.svg"></a><p class="texto">Fondos</p></div>
+                    <div class="col-2"><a href="#"><img src="img/inactivo/personajes.svg"  ></a><p class="texto">Personajes</p></div>
+                    <div class="col-2"><a href="#"><img src="img/inactivo/globos.svg" ></a><p class="texto">Globos</p> </div>
+                    <div class="col-2"><a href="#"> <img src="img/inactivo/texto.svg" ></a> <p class="texto">Texto</p></div>  
+                   
+                </div>
+
+            </div>
+            </center>
+            <div class="card-footer"> 
+            <p class="textopie">Términos y Condiciones</p>
+            <p class="textopie">Copyright 2017, Memes. Todos lo derechos reservados.</p>
+            </div>
+        </div> 
+        <!--Bootstrap 4 -->
+        <script src="js/popper.min.js"></script>
+        <script src="js/jquery-3.2.1.js"></script>
+        <script src="js/bootstrap1.min.js"></script>
+
+        <script src="js/fabric.min.js"></script>
+         <script type="text/javascript">
+            var canvas = new fabric.Canvas('canvas');
+            canvas.setDimensions({
+    width:$("#contenedor").width(),
+    height:$("#contenedor").height()
+  });
+
+
+        </script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>

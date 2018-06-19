@@ -9,15 +9,11 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.creador.memes"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.creador.memes"
     }
   },
   "dependent_plugins": {},
   "modules": [],
   "plugin_metadata": {
-    "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-geolocation": "4.0.1"
+    "cordova-plugin-whitelist": "1.3.3"
   }
 }
