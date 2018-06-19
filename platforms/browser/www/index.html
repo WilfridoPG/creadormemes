@@ -30,15 +30,15 @@
                         <div class="row " style="height: 8vh;">
                             <div class="col-1"></div>  
                             <div class="col-2 "><a id="nuevo" href="#tab_default_0" data-toggle="tab"> <img  src="img/nuevo.png"></a><p class="texto">Nuevo<p></div>
-                            <div class="col-2 "><a id="editar" href="#" > <img src="img/inactivo/editar.png"></a><p class="texto">Editar<p></div>
-                            <div class="col-2 "><a id="agrupar"  href="#" > <img src="img/agrupar.png"></a><p class="texto">Agrupar<p></div>
-                            <div class="col-2 "><a id="desagrupar" href="#" > <img src="img/desagrupar.png"></a><p class="texto">Desagrupar<p></div>
-                            <div class="col-2 "><a id="eliminar" href="#"><img src="img/eliminar.svg"></a></div>
+                            <div class="col-2 "><a  href="#" > <img class="Editar" src="img/inactivo/editar.png"></a><p class="texto Editar">Editar<p></div>
+                            <div class="col-2 "><a   href="#" > <img id="agrupar" src="img/agrupar.png"></a><p class="texto">Agrupar<p></div>
+                            <div class="col-2 "><a  href="#" > <img id="desagrupar"src="img/desagrupar.png"></a><p class="texto">Desagrupar<p></div>
+                            <div class="col-2 "><a  href="#"><img id="eliminar" src="img/eliminar.png"></a></div>
 
                         </div>
                     </div>
                 </div>
-                <br>
+
 
                 <div class="row">
                     <div class=" col-md-1 col-lg-2 "></div> 
@@ -53,10 +53,10 @@
                     <div class="tab-pane active" id="divinicio"  >
                         <div class="row" style="height: 15vh;">
                             <div class="col-6"><input type="file" name="file-5[]" id="file-5" class="inputfile inputfile-4 invisible" style="width:5px" data-multiple-caption="{count} files selected" multiple />
-                                <label for="file-5"><img src="img/subirfondo.svg"> <p class="texto">Subir Fondo</p> </label>
+                                <label for="file-5"><img src="img/subirfondo.png"> <p class="texto">Subir Fondo</p> </label>
                             </div>
                             <div class="col-6">
-                                <input type="file" name="file-6[]" id="file-6" class="inputfile inputfile-5 invisible" style="width:5px" data-multiple-caption="{count} files selected" multiple /><label for="file-6"><img src="img/subirimagen.svg"><p class="texto">Subir Imagen</p></label>
+                                <input type="file" name="file-6[]" id="file-6" class="inputfile inputfile-5 invisible" style="width:5px" data-multiple-caption="{count} files selected" multiple /><label for="file-6"><img src="img/subirimagen.png"><p class="texto">Subir Imagen</p></label>
                             </div>
                         </div>             
                     </div>
@@ -64,11 +64,11 @@
                 <hr>
                  <div class="row">
                     <div class="col-1"></div>
-                    <div class="col-2"><a href="#"><img src="img/activo/inicio.png"> </a><p class="texto">Inicio</p></div>
-                    <div class="col-2"><a href="#"><img src="img/inactivo/fondos.svg"></a><p class="texto">Fondos</p></div>
-                    <div class="col-2"><a href="#"><img src="img/inactivo/personajes.svg"  ></a><p class="texto">Personajes</p></div>
-                    <div class="col-2"><a href="#"><img src="img/inactivo/globos.svg" ></a><p class="texto">Globos</p> </div>
-                    <div class="col-2"><a href="#"> <img src="img/inactivo/texto.svg" ></a> <p class="texto">Texto</p></div>  
+                    <div class="col-2"><a href="#"><img class="Inicio" src="img/activo/inicio.png"> </a><p class="texto Inicio">Inicio</p></div>
+                    <div class="col-2"><a href="#"><img class="Fondos" src="img/inactivo/fondos.png"></a><p class="texto Fondos">Fondos</p></div>
+                    <div class="col-2"><a href="#"><img class="Personajes" src="img/inactivo/personajes.png"  ></a><p class="texto Personajes">Personajes</p></div>
+                    <div class="col-2"><a href="#"><img class="Globos" src="img/inactivo/globos.png" ></a><p class="texto Globos">Globos</p> </div>
+                    <div class="col-2"><a href="#"> <img class="Texto" src="img/inactivo/texto.png" ></a> <p class="texto Texto">Texto</p></div>  
                    
                 </div>
 
@@ -88,9 +88,11 @@
          <script type="text/javascript">
             var canvas = new fabric.Canvas('canvas');
             canvas.setDimensions({
-    width:$("#contenedor").width(),
-    height:$("#contenedor").height()
-  });
+                width:$("#contenedor").width(),
+                height:$("#contenedor").height()
+            });
+
+
 
 
         </script>
