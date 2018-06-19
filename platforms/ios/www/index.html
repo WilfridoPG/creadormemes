@@ -30,7 +30,7 @@
                     <div class="tab-pane active" >  
                         <div class="row " style="height: 8vh;">
                             <div class="col-1"></div>  
-                            <div class="col-2 "><a id="nuevo" href="#tab_default_0" data-toggle="tab"> <img  src="img/nuevo.png"></a><p class="texto">Nuevo<p></div>
+                            <div class="col-2 "><a href="#" > <img class="Nuevo"  src="img/nuevo.png"></a><p class="texto Nuevo">Nuevo<p></div>
                             <div class="col-2 "><a  href="#" > <img class="Editar" src="img/inactivo/editar.png"></a><p class="texto Editar">Editar<p></div>
                             <div class="col-2 "><a   href="#" > <img id="agrupar" src="img/agrupar.png"></a><p class="texto">Agrupar<p></div>
                             <div class="col-2 "><a  href="#" > <img id="desagrupar"src="img/desagrupar.png"></a><p class="texto">Desagrupar<p></div>
@@ -80,99 +80,94 @@
                     </div>
                     <!--Texto-->
                     <div class="tab-pane" id="mostrartexto">
-                        <div id="confitext" style="height: 9vh;">
-                            <div class="row" >
-                                <div class="col-sm-2 col-md-2 col-lg-2 "></div>
-                                <div class="col-1 "><a id="texto" onclick="activar()" href="#"><img src="img/agregatexto.png"></a></div>
-                                <div class="col-1 "></div>
-                                <div class="col-4 "><select id="font-family" size=1 class="form-control">
-                                    <option value="arial">Arial</option>
-                                    <option value="myriad pro">Myriad Pro</option>
-                                    <option value="courier">Courier</option>
-                                    <option value="impact">Impact</option>
-                                    </select>
-                                </div>
-                                <div class="col-1 "><a id="izquierda" href="#"><img src="img/texizquierda.png" ></a></div>
-                                <div class="col-1 "><a id="centrar" href="#" ><img src="img/texcentrar.png" ></a></div>
-                                <div class="col-1 "><a id="derecha" href="#" ><img src="img/texderecha.png" ></a></div>
-                                <div class="col-1 "></div>   
-                                <div class="col-sm-2 col-md-2 col-lg-2 "> </div>
-                                <div class="col-1 "></div>
-                                <div class="col-1 "> <a id="texto" onclick="activareditar()" href="#" ><img src="img/editartexto.png" ></a></div>
-                                <div class="col-1 "> <img src="img/inactivo/texto.png" > </div>    
-                                <div class="col-1 "><button type="button" value="#000000" class="btn btn-default btn-circle colort" style="background-color: #000000;"></button>    
-                                </div>
-                                <div class="col-1 "> <button type="button" value="#FFFFFF" class="btn btn-default btn-circle colort"></button></div>
-                                <div class="col-1 "> <button type="button" value="#f74242" class="btn btn-default btn-circle colort" style="background-color: #f74242;"  ></button>  
-                                </div>
-                                <div class="col-1 "><button type="button" value="#63d24a" class="btn btn-default btn-circle colort " style="background-color:#63d24a;" > </button>
-                                </div>
-                                <div class="col-1 "> <button type="button" value="#2941b9" class="btn btn-default btn-circle colort" style="background-color:#2941b9;" > </button>
-                                </div>
-                                <div class="col-1"> </div>
-                                <div class="col-sm-2 col-md-2 col-lg-2 "> </div>
-                                <div class="col-1 "></div>
-                                <div class="col-1 "><img src="img/colorftexto.png" > </div>
-                                <div class="col-1 "><button type="button" value="" class="btn btn-default btn-circle colorf"> no</button></div>
-                                <div class="col-1 "><button type="button" value="#000000" class="btn btn-default btn-circle colorf" style="background-color:#000000;"></button>    
-                                </div>
-                                <div class="col-1 "> <button type="button" value="#FFFFFF" class="btn btn-default btn-circle colorf">  </button></div>
-                                <div class="col-1 "><button type="button" value="#f74242" class="btn btn-default btn-circle colorf"  style="background-color:#f74242; "></button> 
-                                </div>
-                                <div class="col-1 "><button type="button" value="#63d24a" class="btn btn-default btn-circle colorf"  style="background-color:#63d24a;" ></button>
-                                </div>
-                                <div class="col-1 "> <button type="button" value="#2941b9" class="btn btn-default btn-circle colorf"  style="background-color:#2941b9;" ></button>
-                                </div>
-                                <div class="col-1 "> </div>
-                            </div>     
-                        </div>  
-                        <br>
-                        <br>        
+                        
+                        <div class="row" style="height: 15vh;" >
+                            <div class="col-sm-2 col-md-2 col-lg-2 "></div>
+                            <div class="col-1 "><a id="texto" onclick="activar()" href="#"><img src="img/agregatexto.png"></a></div>
+                            <div class="col-1 "></div>
+                            <div class="col-4 "><select id="font-family" size=1  class="form-control">
+                                <option value="arial">Arial</option>
+                                <option value="myriad pro">Myriad Pro</option>
+                                <option value="courier">Courier</option>
+                                <option value="impact">Impact</option>
+                                </select>
+                            </div>
+                            <div class="col-1"><a id="izquierda" href="#"><img src="img/texizquierda.png" ></a></div>
+                            <div class="col-1"><a id="centrar" href="#" ><img src="img/texcentrar.png" ></a></div>
+                            <div class="col-1"><a id="derecha" href="#" ><img src="img/texderecha.png" ></a></div>
+                            <div class="col-1"></div>   
+                            <div class="col-sm-2 col-md-2 col-lg-2 "> </div>
+                            <div class="col-1"></div>
+                            <div class="col-1"><a id="texto" onclick="activareditar()" href="#" ><img src="img/editartexto.png" ></a></div>
+                            <div class="col-1"><img src="img/inactivo/texto.png" > </div>    
+                            <div class="col-1"><button type="button" value="#000000" class="btn btn-default btn-circle colort" style="background-color: #000000;"></button>    
+                            </div>
+                            <div class="col-1"><button type="button" value="#FFFFFF" class="btn btn-default btn-circle colort"></button></div>
+                            <div class="col-1"><button type="button" value="#f74242" class="btn btn-default btn-circle colort" style="background-color: #f74242;" ></button>  
+                            </div>
+                            <div class="col-1"><button type="button" value="#63d24a" class="btn btn-default btn-circle colort" style="background-color:#63d24a;" > </button>
+                            </div>
+                            <div class="col-1"><button type="button" value="#2941b9" class="btn btn-default btn-circle colort" style="background-color:#2941b9;" > </button>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-sm-2 col-md-2 col-lg-2 "> </div>
+                            <div class="col-1"></div>
+                            <div class="col-1"><img src="img/colorftexto.png" > </div>
+                            <div class="col-1"><button type="button" value="" class="btn btn-default btn-circle colorf"> no</button></div>
+                            <div class="col-1"><button type="button" value="#000000" class="btn btn-default btn-circle colorf" style="background-color:#000000;"></button>    
+                            </div>
+                            <div class="col-1"> <button type="button" value="#FFFFFF" class="btn btn-default btn-circle colorf">  </button></div>
+                            <div class="col-1"><button type="button" value="#f74242" class="btn btn-default btn-circle colorf"  style="background-color:#f74242; "></button> 
+                            </div>
+                            <div class="col-1"><button type="button" value="#63d24a" class="btn btn-default btn-circle colorf"  style="background-color:#63d24a;" ></button>
+                            </div>
+                            <div class="col-1"> <button type="button" value="#2941b9" class="btn btn-default btn-circle colorf"  style="background-color:#2941b9;" ></button>
+                            </div>
+                            <div class="col-1"> </div>
+                        </div>       
+                                
                     </div>
                     <!--Filtros -->
                     <div class="tab-pane" id="mostrarfiltros">    
                         <div class="row" >
-                            <div class="col-6"><a href="#tab_default_12" data-toggle="tab"><img src="img/activo/filtros.png"> </a><p class="texto">Filtros</p>
+                            <div class="col-6"><a href="#"><img class="Filtros"  src="img/activo/filtros.png"> </a><p style="color:#ffbc00;" class="texto Filtros ">Filtros</p>
                             </div>
-                            <div class="col-6"><a  href="#tab_default_13" data-toggle="tab"><img  src="img/inactivo/combinar.png"> </a> <p class="texto">Combinar</p>
+                            <div class="col-6"><a href="#"><img class="Combinar"  src="img/inactivo/combinar.png"> </a> <p class="texto Combinar">Combinar</p>
                             </div>
                         </div>
                         <div class="tab-content">
-                            <div id="divfilter" class="tab-pane active" >
+                            <div id="mostrarfiltrosf" class="tab-pane active" >
                                 <table class="">
                                     <tr>
-                                    <th><a class='thumbnail'><img id="original"  alt="Cinque Terre" width="48" height="40" title="Imágen original"></a></th>
-                                    <th><a class='thumbnail'><img id="filtro"   alt="Cinque Terre" width="48" height="40" title="Escala de grises"></a></th>
-                                    <th><a class='thumbnail'><img id="filtro1"   alt="Cinque Terre" width="48" height="40" title="Invertir colores"></a></th>
-                                    <th><a class='thumbnail'><img id="filtro2"  alt="Cinque Terre" width="48" height="40" title="Sepia"></a></th>
-                                    <th><a class='thumbnail'><img id="filtro3"   alt="Cinque Terre" width="48" height="40" title="Desenfoque"></a></th>  
+                                    <th><a class='thumbnail'><img id="original"  width="48" height="40" title="Imágen original"></a></th>
+                                    <th><a class='thumbnail'><img id="filtro"    width="48" height="40" title="Escala de grises"></a></th>
+                                    <th><a class='thumbnail'><img id="filtro1"   width="48" height="40" title="Invertir colores"></a></th>
+                                    <th><a class='thumbnail'><img id="filtro2"   width="48" height="40" title="Sepia"></a></th>
+                                    <th><a class='thumbnail'><img id="filtro3"   width="48" height="40" title="Desenfoque"></a></th>  
                                     </tr>
                                 </table>
                             </div>
-                            <div class="tab-pane" id="divcombinar">
+                            <div class="tab-pane" id="mostrarfiltrosc">
                                 <div class="row" style="height: 6vh;">
-                                    <div class="col-3"><a class="brillo" href="#" data-toggle="tab"><img src="img/activo/brillo.png"></a>
-                                    <p class="texto">Brillo<p>
+                                    <div class="col-3"><a  href="#"><img class="Brillo" src="img/activo/brillo.png"></a>
+                                    <p style="color:#ffbc00;" class="texto Brillo">Brillo<p>
                                     </div>
-                                    <div class="col-3"><a id="gradient-transparency" href="" data-toggle="tab"><img src="img/inactivo/transparencia.png"></a>
-                                    <p class="texto">Transparencia<p>
+                                    <div class="col-3"><a  href="#"><img class="Transparencia" src="img/inactivo/transparencia.png"></a>
+                                    <p class="texto Transparencia">Transparencia<p>
                                     </div>
-                                    <div class="col-3"><a id="pixelate" href="#" data-toggle="tab"><img src="img/inactivo/pixel.png"></a>       
-                                    <p class="texto">Pixel<p>
+                                    <div class="col-3"><a  href="#" ><img class="Pixel" src="img/inactivo/pixel.png"></a>       
+                                    <p class="texto Pixel">Pixel<p>
                                     </div>
-                                    <div class="col-3"><a id="tint" href="#" data-toggle="tab"><img  src="img/inactivo/opacidad.png"></a>       
-                                    <p class="textopie">Opacidad<p>
+                                    <div class="col-3"><a  href="#"><img class="Opacidad" src="img/inactivo/opacidad.png"></a>       
+                                    <p class="texto Opacidad">Opacidad<p>
                                     </div>
                                 </div>
                                 <div class="row" style="height: 2vh;">
                                     <div class="col-12">
-                                        <div id="myDIV"><label><input type="range" id="brightness-value" value="100" min="0" max="255" ></label></div>           
-                                        <div  id="myDIV1" style="display:none;"><label><input type="range" id="gradient-transparency-value" value="100" min="0" max="255" ></label>
-                                        </div>
-                                        <div  id="myDIV2" style="display:none;"><label><input type="range" id="pixelate-value" value="10" min="2" max="20"></label>
-                                        </div>
-                                        <div  id="myDIV3"  style="display:none;" ><label><input type="range" id="tint-opacity" min="0" max="1" value="0.5" step="0.1"></label>
-                                        </div>
+                                        <input type="range" id="brillorango" value="100" min="0" max="255" >         
+                                        <input style="display:none;" type="range" id="transparenciarango" value="100" min="0" max="255" >
+                                        <input style="display:none;" type="range" id="pixelrango" value="10" min="2" max="20">
+                                        <input style="display:none;" type="range" id="opacidadrango" min="0" max="1" value="0.5" step="0.1">
                                     </div>
                                 </div>
                             </div>
