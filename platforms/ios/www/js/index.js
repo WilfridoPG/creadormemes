@@ -10,13 +10,53 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
+        
+        
         this.receivedEvent('deviceready');
+         $(".Editar").prop('disabled', true);
+
+
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+
         
     $(".Inicio").css("color", "#ffbc00");
+   
+    var fondo,fbandera=0;
+    
+    document.getElementById('file-5').addEventListener("change", function (e) {
+    var file = e.target.files[0];
+	var reader = new FileReader();
+ 	reader.onload = function (event) {
+    var img = new Image();
+   	img.onload = function (){ 
+	    var f_img = new fabric.Image(img,{left: 0,top: 0,width:canvas.width,height:canvas.height,/*angle: 30,opacity: 0.85*/});
+      canvas.setBackgroundImage(f_img);
+      canvas.renderAll();
+   	}
+   	img.src = event.target.result;
+    GenerarMeme(img.src);
+  }
+	reader.readAsDataURL(file);
+});
+	// cargar imagen sobre el fondo 
+document.getElementById('file-6').addEventListener("change", function (e) {
+  var file = e.target.files[0];
+  var reader = new FileReader();
+  reader.onload = function (f) {
+    var data = f.target.result; 
+   	fabric.Image.fromURL(data, function (img) {
+      var oImg = img.set({left: 10, top: 100, angle: 00,width:300, height:200,cornerStyle: 'circle',cornerSize: 20,}).scale(0.9);
+      canvas.add(oImg).renderAll();
+     	//canvas.setActiveObject(oImg);
+     	//canvas.toDataURL({format: 'png', quality: 0.8});
+   	});
+    //GenerarMeme(data.src);
+ 	};
+  reader.readAsDataURL(file);
+});
 
 
         
@@ -25,10 +65,20 @@ var app = {
 };
 
 app.initialize();
+
 $(".Nuevo").click(function () {
-    cambiarImagen('img/activo/inicio.png','img/inactivo/fondos.png','img/inactivo/personajes.png','img/inactivo/globos.png','img/inactivo/texto.png','img/inactivo/editar.png');
-    cambiarColor("#ffbc00"," #b0b0b1"," #b0b0b1"," #b0b0b1","#b0b0b1","#b0b0b1");
-    mostrarSecciones("#mostrarinicio","#mostrarfondos","#mostrarpersonajes","#mostrarglobos","#mostrartexto","#mostrarfiltros");
+    navigator.notification.confirm("Se borrará lo que ha realizado ¿Desea continuar ?", confirmCallback, "Nuevo Meme", "Si,No");
+    function confirmCallback(buttonIndex) {
+        if(buttonIndex==1){
+            canvas.clear();
+            fbandera=0;
+            $(".Editar").prop('disabled', true);  
+            cambiarImagen('img/activo/inicio.png','img/inactivo/fondos.png','img/inactivo/personajes.png','img/inactivo/globos.png','img/inactivo/texto.png','img/inactivo/editar.png');
+            cambiarColor("#ffbc00"," #b0b0b1"," #b0b0b1"," #b0b0b1","#b0b0b1","#b0b0b1");
+            mostrarSecciones("#mostrarinicio","#mostrarfondos","#mostrarpersonajes","#mostrarglobos","#mostrartexto","#mostrarfiltros");
+        }
+    }
+
 })
 $(".Inicio").click(function () {
     cambiarImagen('img/activo/inicio.png','img/inactivo/fondos.png','img/inactivo/personajes.png','img/inactivo/globos.png','img/inactivo/texto.png','img/inactivo/editar.png');
@@ -141,4 +191,162 @@ function mostrarango(activo,inactivo1,inactivo2,inactivo3){
       $(inactivo2).hide();
       $(inactivo3).hide();        
 }
+
+
+$('#Eliminar').click(function(){
+  var activeObject = canvas.getActiveObject(),
+  activeGroup = canvas.getActiveGroup();
+  if (activeObject) {
+    canvas.remove(activeObject);
+  }
+  else if (activeGroup) {
+    var objectsInGroup = activeGroup.getObjects();
+    canvas.discardActiveGroup();
+    objectsInGroup.forEach(function(object) {
+      canvas.remove(object);
+    });               
+  }else{
+      navigator.notification.alert("Seleccione un elemento o grupo de elementos.", alertCallback, "Eliminar", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");   
+      }  
+   }   
+});
+    //Agrupar elementos 
+$("#Agrupar").on('click', function() {
+  if (canvas.getActiveGroup()) {
+    var activegroup = canvas.getActiveGroup();
+    var objectsInGroup = activegroup.getObjects();
+    activegroup.clone(function(newgroup) {
+      canvas.discardActiveGroup();
+      objectsInGroup.forEach(function(object) {
+            canvas.remove(object);  
+        });
+      canvas.add(newgroup);  
+    });
+  }else{
+    navigator.notification.alert("Para agrupar, seleccione dos o más elementos, haga doble clic y arrastre sobre los elementos. ", alertCallback, "Agrupar", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+    }
+    //alert("Por favor seleccione dos o más elementos");
+});
+$("#Desagrupar").click(function(){
+  var activeObject = canvas.getActiveObject();
+  if(canvas.getActiveObject() && activeObject.type=="group"){   
+    var items = activeObject._objects;
+    activeObject._restoreObjectsState();
+    canvas.remove(activeObject);
+    for(var i = 0; i < items.length; i++) {
+      canvas.add(items[i]);
+      canvas.item(canvas.size()-1).hasControls = true;
+    }
+    canvas.renderAll();    
+  }else
+  {
+    navigator.notification.alert("Selecione un elemento agrupado.", alertCallback, "Desagrupar", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      } 
+  } // alert("Por favor seleccione elemento agrupado");
+});
+$('#Descargar').click(function(){
+
+  this.href = canvas.toDataURL({
+    format: 'png',
+    quality: 10
+  });
+  this.download = 'Meme.png';
+  /*
+  window.canvas2ImagePlugin.saveImageDataToLibrary(
+    function(msg){ 
+      navigator.notification.alert('Se ha guardado el meme en la galería de su dispositivo, revise el directorio:'+msg, alertCallback, 'Descarga', ' Aceptar');
+      function alertCallback() {
+        console.log("Alert is Dismissed!");
+      }       // Ext.Msg.alert('Descarga','Se ha guardado el meme en la galería de su dispositivo');
+    },
+    function(err){
+      navigator.notification.alert('Error, no se pudo guardar el archivo.', alertCallback, 'Descarga', ' Aceptar');
+      function alertCallback() {
+        console.log("Alert is Dismissed!");
+      }   // Ext.Msg.alert('Descarga','Error no se pudo guardar el archivo');
+    },
+    document.getElementById('canvas')
+  );
+  */
+});
+
+function agregarTexto(){
+    var texto = document.getElementById('textomeme').value;
+    var family = document.getElementById('font-family').value;
+    if (texto ) {
+        var Text = new fabric.Text(texto, {
+        fontSize: 40,  
+        left:canvas.width/3 ,
+        stroke: '#c3bfbf',
+        strokeWidth:0.5,
+        top: 100,
+        textAlign:'left',
+        cornerStyle: 'circle',
+        cornerSize: 20,
+        });
+    canvas.add(Text);
+  }
+  document.getElementById('textomeme').value="";    
+}
+
+function activarEditar(){
+  var obj = canvas.getActiveObject();
+  if(canvas.getActiveObject())
+  if(obj.get('type')=='text'){
+    document.getElementById('text-cont').value=obj.getText();
+    $("#modaleditar").modal();
+  }else{
+      navigator.notification.alert("Seleccione un texto para editar. ", alertCallback, "Editar texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+  }
+   // alert("Selecione un texto");
+   else
+    {  navigator.notification.alert("Seleccione un texto para editar. ", alertCallback, "Editar texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+    }
+}
+$('#text-cont').keyup(function() {
+    var obj = canvas.getActiveObject();
+  if (obj) {      
+      obj.setText($(this).val());
+      canvas.renderAll();  
+  }
+});
+
+
+document.getElementById('font-family').onchange = function() {
+  canvas.getActiveObject().setFontFamily(this.value);
+  canvas.renderAll();
+};      
+$('#Izquierda').click(function(){
+  canvas.getActiveObject().setTextAlign('left');
+  canvas.renderAll();
+});
+$('#Centrar').click(function(){
+  canvas.getActiveObject().setTextAlign('center');
+  canvas.renderAll();
+});
+$('#Derecha').click(function(){
+  canvas.getActiveObject().setTextAlign('right');
+  canvas.renderAll();
+});
+$('.colort').click(function(){
+  canvas.getActiveObject().setFill(this.value);
+  canvas.renderAll();
+});          
+$('.colorf').click(function(){
+  canvas.getActiveObject().setTextBackgroundColor(this.value);
+  canvas.renderAll();
+});
 
