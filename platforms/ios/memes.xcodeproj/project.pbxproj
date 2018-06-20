@@ -19,6 +19,7 @@
 		28F91E4D213B455BAEEE2D8C /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A2FD65C3EF43A4B8529F4F /* CDVNotification.m */; };
 		781DCAB708F7493F9DFF1153 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4A6403845E74524B21AE1E8 /* CDVNotification.bundle */; };
 		7D947CD52ABE46BE82F3504C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C716AED7F10E43F187A188DF /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F7C35B9B8461434EB14C74DD /* Canvas2ImagePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 613EC04B65FA4A1394BB979E /* Canvas2ImagePlugin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		11D9074DAA0544E7A2415F5C /* CDVNotification.h */ = {isa = PBXFileReference; name = "CDVNotification.h"; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		C4A6403845E74524B21AE1E8 /* CDVNotification.bundle */ = {isa = PBXFileReference; name = "CDVNotification.bundle"; path = "CDVNotification.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
 		C716AED7F10E43F187A188DF /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		613EC04B65FA4A1394BB979E /* Canvas2ImagePlugin.m */ = {isa = PBXFileReference; name = "Canvas2ImagePlugin.m"; path = "cordova-plugin-canvas2image/Canvas2ImagePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		19A5F0C0A60544018BB95398 /* Canvas2ImagePlugin.h */ = {isa = PBXFileReference; name = "Canvas2ImagePlugin.h"; path = "cordova-plugin-canvas2image/Canvas2ImagePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,8 @@
 			children = (
 				69A2FD65C3EF43A4B8529F4F /* CDVNotification.m */,
 				11D9074DAA0544E7A2415F5C /* CDVNotification.h */,
+				613EC04B65FA4A1394BB979E /* Canvas2ImagePlugin.m */,
+				19A5F0C0A60544018BB95398 /* Canvas2ImagePlugin.h */,
 			);
 			name = Plugins;
 			path = "memes/Plugins";
@@ -285,6 +290,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				28F91E4D213B455BAEEE2D8C /* CDVNotification.m in Sources */,
+				F7C35B9B8461434EB14C74DD /* Canvas2ImagePlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
