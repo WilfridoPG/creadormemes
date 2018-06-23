@@ -13,7 +13,7 @@ var app = {
         
         
         this.receivedEvent('deviceready');
-         $(".Editar").prop('disabled', true);
+         //$(".Editar").prop('disabled', true);
 
 
     },
@@ -21,8 +21,6 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 
-        
-    $(".Inicio").css("color", "#ffbc00");
    
     var fondo,fbandera=0;
     
@@ -56,11 +54,7 @@ document.getElementById('file-6').addEventListener("change", function (e) {
     //GenerarMeme(data.src);
  	};
   reader.readAsDataURL(file);
-});
-
-
-        
-        
+});    
     }
 };
 
@@ -261,7 +255,7 @@ $('#Descargar').click(function(){
   */
   window.canvas2ImagePlugin.saveImageDataToLibrary(
     function(msg){ 
-      navigator.notification.alert('Se ha guardado el meme en la galería de su dispositivo, revise el directorio:'+msg, alertCallback, 'Descarga', ' Aceptar');
+      navigator.notification.alert('Se ha guardado el archivo en la galería de fotos', alertCallback, 'Descarga', ' Aceptar');
       function alertCallback() {
         console.log("Alert is Dismissed!");
       }       // Ext.Msg.alert('Descarga','Se ha guardado el meme en la galería de su dispositivo');
@@ -355,53 +349,26 @@ $.ajax({
    dataType: "json",
    async : false,
    url: "https://ponchisponchis.com/Appmeme/fondo.php",
-  }).done(function( data, textStatus, jqXHR ) {
+   beforeSend:function(){
+
+                $('#mostrarf').html("esperando datos");
+   },
+   success:function(result){
     var cadena = "";
-    $.each(data, function(i,filename) {
+    $.each(result, function(i,filename) {
          cadena+="<li><a class='thumbnail'><img style='width:100px;' src='https://ponchisponchis.com/Appmeme/"+ filename +"' class='agregafondo' ></a></li>"; 
     });
      $('#mostrarf').html(cadena);
-     conexionlocal=0;
-  })
-  .fail(function( jqXHR, textStatus, errorThrown ) {
+
+   },
+
+
+  }).fail(function() {
     $('#mostrarf').html("<li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/verdeclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/azulclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/amarilloclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/blanco.png'  class='agregafondo' ></a></li>");
     conexionlocal=1;
           //alert("Requiere conexión con internet para poder compartir y mostrar más imágenes.");
   });
 
-$.ajax({
-   type: "POST",
-   dataType: "json",
-   async : false,
-   url: "https://ponchisponchis.com/Appmeme/personaje.php",
-  }).done(function( data, textStatus, jqXHR ) {
-    cadena = "";
-    $.each(data, function(i,filename) {
-      cadena+="<li><a class='thumbnail'><img src='https://ponchisponchis.com/Appmeme/"+ filename +"' class='agregapersonaje resize-image' ></a></li>";            
-    });
-    $('#mostrarp').html(cadena);
-    conexionlocal=0;  
-  })
-  .fail(function( jqXHR, textStatus, errorThrown ) {
-      $('#mostrarp').html("<li><a class='thumbnail'><img  src='img/personajes/PPRoger Federer.png'  class='agregapersonaje' ></a></li><li><a class='thumbnail'><img  src='img/personajes/PPBARACK OBAMA.png'  class='agregapersonaje' ></a></li>");
-      conexionlocal=1; 
-  });
-  
-$.ajax({
-   type: "POST",
-   dataType: "json",
-   async : false,
-   url: "https://ponchisponchis.com/Appmeme/globo.php",
-  }).done(function( data, textStatus, jqXHR ) {
-    cadena = "";
-    $.each(data, function(i,filename) {
-      cadena+="<li><a class='thumbnail'><img src='https://ponchisponchis.com/Appmeme/"+ filename +"' class='agregaglobo resize-image' ></a></li>";
-    });
-    $('#mostrarg').html(cadena);
-    conexionlocal=0;
-  })
-  .fail(function( jqXHR, textStatus, errorThrown ) {
-            $('#mostrarg').html("<li><a class='thumbnail'><img src='img/globos/1.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/2.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/3.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/5.png'  class='agregaglobo' ></a></li>");
-            conexionlocal=1; 
-  });
-  //funcion qu agrega fondos
+
+
+

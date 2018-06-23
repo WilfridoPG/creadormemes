@@ -35,10 +35,10 @@
                     <div class="tab-pane active" >  
                         <div class="row " style="height: 8vh;">
                             <div class="col-1"></div>  
-                            <div class="col-2 "><a href="#" > <img class="Nuevo"  src="img/nuevo.png"></a><p class="texto Nuevo">Nuevo<p></div>
-                            <div class="col-2 "><a  href="#" > <img class="Editar" src="img/inactivo/editar.png"></a><p class="texto Editar">Editar<p></div>
+                            <div class="col-2 "><a  href="#" > <img class="Nuevo"  src="img/nuevo.png"></a><p class="texto Nuevo">Nuevo<p></div>
+                            <div class="col-2 "><a  href="#" > <img class="Editar" id="EditarFondo" src="img/inactivo/editar.png"></a><p class="texto Editar">Editar<p></div>
                             <div class="col-2 "><a   href="#" > <img id="Agrupar" src="img/agrupar.png"></a><p class="texto">Agrupar<p></div>
-                            <div class="col-2 "><a  href="#" > <img id="Desagrupar"src="img/desagrupar.png"></a><p class="texto">Desagrupar<p></div>
+                            <div class="col-2 "><a  href="#" > <img id="Desagrupar" src="img/desagrupar.png"></a><p class="texto">Desagrupar<p></div>
                             <div class="col-2 "><a  href="#"><img id="Eliminar" src="img/eliminar.png"></a></div>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                 <!--menu inferior-->
                  <div class="row">
                     <div class="col-1"></div>
-                    <div class="col-2"><a href="#"><img class="Inicio" src="img/activo/inicio.png"> </a><p class="texto Inicio">Inicio</p></div>
+                    <div class="col-2"><a href="#"><img class="Inicio" src="img/activo/inicio.png"> </a><p style="color:#ffbc00;" class="texto Inicio">Inicio</p></div>
                     <div class="col-2"><a href="#"><img class="Fondos" src="img/inactivo/fondos.png"></a><p class="texto Fondos">Fondos</p></div>
                     <div class="col-2"><a href="#"><img class="Personajes" src="img/inactivo/personajes.png"  ></a><p class="texto Personajes">Personajes</p></div>
                     <div class="col-2"><a href="#"><img class="Globos" src="img/inactivo/globos.png" ></a><p class="texto Globos">Globos</p> </div>
@@ -243,6 +243,7 @@
         <script src="js/fabric.min.js"></script>
          <script type="text/javascript">
             var canvas = new fabric.Canvas('canvas');
+            $('#EditarFondo').attr("disabled", true);
             canvas.setDimensions({
                 width:$("#contenedor").width(),
                 height:$("#contenedor").height()
