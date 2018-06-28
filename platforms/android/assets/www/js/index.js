@@ -343,30 +343,41 @@ $('.colorf').click(function(){
   canvas.renderAll();
 });
 
-
 $.ajax({
    type: "POST",
    dataType: "json",
    async : false,
-   url: "https://ponchisponchis.com/Appmeme/fondo.php",
+   url: "https://ponchisponchis.com/Appmeme/imagenes.php",
    beforeSend:function(){
 
-                $('#mostrarf').html("esperando datos");
+                $('.estado').html("Cargando...");
    },
    success:function(result){
-    var cadena = "";
+    $('.estado').hide();
+    var fondos;
+    var personajes;
+    var globos;
     $.each(result, function(i,filename) {
-         cadena+="<li><a class='thumbnail'><img style='width:100px;' src='https://ponchisponchis.com/Appmeme/"+ filename +"' class='agregafondo' ></a></li>"; 
+        var letra =filename.charAt(0);
+        if (letra=="f") {
+            fondos+="<li><a class='thumbnail'><img style='width:100px;' src='https://ponchisponchis.com/Appmeme/img/"+ filename +"' class='agregafondo' ></a></li>"; 
+        } 
+        if (letra=="p") {
+            personajes+="<li><a class='thumbnail'><img src='https://ponchisponchis.com/Appmeme//img/"+ filename +"' class='agregapersonaje resize-image' ></a></li>";            
+         }
+        if (letra=="g") {
+            globos+="<li><a class='thumbnail'><img src='https://ponchisponchis.com/Appmeme//img/"+ filename +"' class='agregaglobo resize-image' ></a></li>";
+        }
     });
-     $('#mostrarf').html(cadena);
-
+     $('#mostrarf').html(fondos);
+     $('#mostrarp').html(personajes);
+     $('#mostrarg').html(globos);
    },
-
-
   }).fail(function() {
+    $('.estado').hide();
     $('#mostrarf').html("<li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/verdeclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/azulclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/amarilloclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/blanco.png'  class='agregafondo' ></a></li>");
-    conexionlocal=1;
-          //alert("Requiere conexión con internet para poder compartir y mostrar más imágenes.");
+    $('#mostrarp').html("<li><a class='thumbnail'><img  src='img/personajes/PPRoger Federer.png'  class='agregapersonaje' ></a></li><li><a class='thumbnail'><img  src='img/personajes/PPBARACK OBAMA.png'  class='agregapersonaje' ></a></li>");
+    $('#mostrarg').html("<li><a class='thumbnail'><img src='img/globos/1.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/2.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/3.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/5.png'  class='agregaglobo' ></a></li>");
   });
 
 
