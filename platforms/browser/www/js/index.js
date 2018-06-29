@@ -207,7 +207,7 @@ $('#Eliminar').click(function(){
    }   
 });
     //Agrupar elementos 
-$("#Agrupar").on('click', function() {
+$("#Agrupar").click(function() {
   if (canvas.getActiveGroup()) {
     var activegroup = canvas.getActiveGroup();
     var objectsInGroup = activegroup.getObjects();
@@ -269,6 +269,9 @@ $('#Descargar').click(function(){
     document.getElementById('canvas')
   );
 });
+$("#Agregart").click(function(){
+  $("#modaltext").modal();
+});
 
 function agregarTexto(){
     var texto = document.getElementById('textomeme').value;
@@ -288,8 +291,7 @@ function agregarTexto(){
   }
   document.getElementById('textomeme').value="";    
 }
-
-function activarEditar(){
+$("#Editartext").click(function(){
   var obj = canvas.getActiveObject();
   if(canvas.getActiveObject())
   if(obj.get('type')=='text'){
@@ -308,7 +310,7 @@ function activarEditar(){
       //console.log("Alert is Dismissed!");
       }  
     }
-}
+});
 $('#text-cont').keyup(function() {
     var obj = canvas.getActiveObject();
   if (obj) {      
