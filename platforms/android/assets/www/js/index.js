@@ -269,7 +269,7 @@ $('#Descargar').click(function(){
     document.getElementById('canvas')
   );
 });
-$("#Agregart").click(function(){
+$("#Agregartext").click(function(){
   $("#modaltext").modal();
 });
 
