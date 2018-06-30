@@ -323,26 +323,265 @@ $('#text-cont').keyup(function() {
 document.getElementById('font-family').onchange = function() {
   canvas.getActiveObject().setFontFamily(this.value);
   canvas.renderAll();
-};      
+}; 
+     
 $('#Izquierda').click(function(){
+  var obj = canvas.getActiveObject();
+  if(canvas.getActiveObject())
+  if(obj.get('type')=='text'){
+
   canvas.getActiveObject().setTextAlign('left');
   canvas.renderAll();
+  }else{
+      navigator.notification.alert("Seleccione un texto para alinear. ", alertCallback, "Alinear texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+  }
+   // alert("Selecione un texto");
+   else
+    {  navigator.notification.alert("Seleccione un texto para alinear. ", alertCallback, "Alinear texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+    }
 });
 $('#Centrar').click(function(){
+  var obj = canvas.getActiveObject();
+  if(canvas.getActiveObject())
+  if(obj.get('type')=='text'){
   canvas.getActiveObject().setTextAlign('center');
   canvas.renderAll();
+  }else{
+      navigator.notification.alert("Seleccione un texto para alinear. ", alertCallback, "Alinear texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+  }
+   // alert("Selecione un texto");
+   else
+    {  navigator.notification.alert("Seleccione un texto para alinear. ", alertCallback, "Alinear texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+    }
 });
 $('#Derecha').click(function(){
+  var obj = canvas.getActiveObject();
+  if(canvas.getActiveObject())
+  if(obj.get('type')=='text'){
   canvas.getActiveObject().setTextAlign('right');
   canvas.renderAll();
+  }else{
+      navigator.notification.alert("Seleccione un texto para alinear. ", alertCallback, "Alinear texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+  }
+   // alert("Selecione un texto");
+   else
+    {  navigator.notification.alert("Seleccione un texto para alinear. ", alertCallback, "Alinear texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+    }
 });
+
+
+
+
+var estado=0;
 $('.colort').click(function(){
-  canvas.getActiveObject().setFill(this.value);
-  canvas.renderAll();
-});          
+
+  var obj = canvas.getActiveObject();
+  if(canvas.getActiveObject())
+  if(obj.get('type')=='text'){
+
+  if(estado==0){
+        $(".colort").attr('src','img/colortexto/textoamarillo.png');
+        
+        canvas.getActiveObject().setFill("#FFF700");
+
+        canvas.renderAll();
+        estado=estado+1;
+        console.log("estado:"+estado);
+    }else if(estado==1){
+      $(".colort").attr('src','img/colortexto/textoverde.png');
+        canvas.getActiveObject().setFill("#78FF00");
+        canvas.renderAll();
+        estado=estado+1;
+    console.log("estado2:"+estado);
+    
+        
+    
+    }else if(estado==2){
+        $(".colort").attr('src','img/colortexto/textorojo.png');
+        canvas.getActiveObject().setFill("#FF0000");
+        canvas.renderAll();
+        estado=estado+1;
+    console.log("estado2:"+estado);
+    
+        
+    }else if(estado==3){
+        $(".colort").attr('src','img/colortexto/textomorado.png');
+        canvas.getActiveObject().setFill("#D500FF");
+        canvas.renderAll();
+        estado=estado+1;
+    console.log("estado2:"+estado);
+    
+        
+    }else if(estado==4){
+        $(".colort").attr('src','img/colortexto/textorosado.png');
+        canvas.getActiveObject().setFill("#FF00D4");
+        canvas.renderAll();
+        estado=estado+1;
+    
+    
+        
+    }else if(estado==5){
+        $(".colort").attr('src','img/colortexto/texto.png');
+          canvas.getActiveObject().setFill("#FFFFFF");
+          canvas.renderAll();
+         estado=estado+1;
+    
+   
+        
+    }else if(estado==6){
+        $(".colort").attr('src','img/colortexto/textonegro.png');
+          canvas.getActiveObject().setFill("#000000");
+          canvas.renderAll();
+          estado=0;
+    
+   
+        
+    }
+        
+    
+   
+        
+    
+  }else{
+      navigator.notification.alert("Seleccione un texto para colorear. ", alertCallback, "Color para texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+  }
+   // alert("Selecione un texto");
+   else
+    {  navigator.notification.alert("Seleccione un texto para colorear. ", alertCallback, "Color para texto", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+    }
+
+
+
+
+}); 
+
+$('#nocolor').click(function(){
+
+  var obj = canvas.getActiveObject();
+  if(canvas.getActiveObject())
+  if(obj.get('type')=='text'){
+
+   $(".colorf").attr('src','img/colortexto/colorftexto.png');
+          canvas.getActiveObject().setTextBackgroundColor("");
+          canvas.renderAll();
+
+}else{
+      navigator.notification.alert("Seleccione un texte para quitar fondo. ", alertCallback, "Sin fondo", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+  }
+   // alert("Selecione un texto");
+   else
+    {  navigator.notification.alert("Seleccione un texto para quitar fondo. ", alertCallback, "Sin fondo ", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+    }
+  
+});
+
 $('.colorf').click(function(){
-  canvas.getActiveObject().setTextBackgroundColor(this.value);
-  canvas.renderAll();
+  var obj = canvas.getActiveObject();
+  if(canvas.getActiveObject())
+  if(obj.get('type')=='text'){
+
+  if(estado==0){
+        $(".colorf").attr('src','img/colortexto/fondoamarillo.png');
+        canvas.getActiveObject().setTextBackgroundColor("#FFF700");
+
+        canvas.renderAll();
+        estado=estado+1;
+        console.log("estado:"+estado);
+    }else if(estado==1){
+        $(".colorf").attr('src','img/colortexto/fondoverde.png');
+        canvas.getActiveObject().setTextBackgroundColor("#78FF00");
+        canvas.renderAll();
+        estado=estado+1;
+    console.log("estado2:"+estado);
+    
+        
+    
+    }else if(estado==2){
+        $(".colorf").attr('src','img/colortexto/fondorojo.png');
+        canvas.getActiveObject().setTextBackgroundColor("#FF0000");
+        canvas.renderAll();
+        estado=estado+1;
+    console.log("estado2:"+estado);
+    
+        
+    }else if(estado==3){
+        $(".colorf").attr('src','img/colortexto/fondomorado.png');
+        canvas.getActiveObject().setTextBackgroundColor("#D500FF");
+        canvas.renderAll();
+        estado=estado+1;
+    console.log("estado2:"+estado);
+    
+        
+    }else if(estado==4){
+        $(".colorf").attr('src','img/colortexto/fondorosado.png');
+        canvas.getActiveObject().setTextBackgroundColor("#FF00D4");
+        canvas.renderAll();
+        estado=estado+1;
+    
+    
+        
+    }else if(estado==5){
+        $(".colorf").attr('src','img/colortexto/colorftexto.png');
+          canvas.getActiveObject().setTextBackgroundColor("#FFFFFF");
+          canvas.renderAll();
+         estado=estado+1;
+    
+   
+        
+    }else if(estado==6){
+        $(".colorf").attr('src','img/colortexto/fondonegro.png');
+          canvas.getActiveObject().setTextBackgroundColor("#000000");
+          canvas.renderAll();
+          estado=0;
+    
+   
+        
+    }
+        
+  }else{
+      navigator.notification.alert("Seleccione un texto para colorear. ", alertCallback, "Color para fondo", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+  }
+   // alert("Selecione un texto");
+   else
+    {  navigator.notification.alert("Seleccione un texto para colorear. ", alertCallback, "Color para fondo", "Aceptar");
+      function alertCallback() {
+      //console.log("Alert is Dismissed!");
+      }  
+    }
+  
 });
 
 $.ajax({
