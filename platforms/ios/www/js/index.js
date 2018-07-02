@@ -398,67 +398,27 @@ $('.colort').click(function(){
   if(obj.get('type')=='text'){
 
   if(estado==0){
-        $(".colort").attr('src','img/colortexto/textoamarillo.png');
-        
-        canvas.getActiveObject().setFill("#FFF700");
-
-        canvas.renderAll();
-        estado=estado+1;
-        console.log("estado:"+estado);
+      colorTexto('img/colortexto/textoamarillo.png',"#FFF700");
+       estado=estado+1; 
     }else if(estado==1){
-      $(".colort").attr('src','img/colortexto/textoverde.png');
-        canvas.getActiveObject().setFill("#78FF00");
-        canvas.renderAll();
-        estado=estado+1;
-    console.log("estado2:"+estado);
-    
-        
-    
+      colorTexto('img/colortexto/textoverde.png',"#78FF00");
+      estado=estado+1; 
     }else if(estado==2){
-        $(".colort").attr('src','img/colortexto/textorojo.png');
-        canvas.getActiveObject().setFill("#FF0000");
-        canvas.renderAll();
+        colorTexto('img/colortexto/textorojo.png',"#FF0000");
         estado=estado+1;
-    console.log("estado2:"+estado);
-    
-        
     }else if(estado==3){
-        $(".colort").attr('src','img/colortexto/textomorado.png');
-        canvas.getActiveObject().setFill("#D500FF");
-        canvas.renderAll();
+        colorTexto('img/colortexto/textomorado.png',"#D500FF");
         estado=estado+1;
-    console.log("estado2:"+estado);
-    
-        
     }else if(estado==4){
-        $(".colort").attr('src','img/colortexto/textorosado.png');
-        canvas.getActiveObject().setFill("#FF00D4");
-        canvas.renderAll();
-        estado=estado+1;
-    
-    
-        
+      colorTexto('img/colortexto/textorosado.png',"#FF00D4");
+      estado=estado+1;  
     }else if(estado==5){
-        $(".colort").attr('src','img/colortexto/texto.png');
-          canvas.getActiveObject().setFill("#FFFFFF");
-          canvas.renderAll();
-         estado=estado+1;
-    
-   
-        
+      colorTexto('img/colortexto/texto.png',"#FFFFFF");
+      estado=estado+1;  
     }else if(estado==6){
-        $(".colort").attr('src','img/colortexto/textonegro.png');
-          canvas.getActiveObject().setFill("#000000");
-          canvas.renderAll();
+          colorTexto('img/colortexto/textonegro.png',"#000000");
           estado=0;
-    
-   
-        
     }
-        
-    
-   
-        
     
   }else{
       navigator.notification.alert("Seleccione un texto para colorear. ", alertCallback, "Color para texto", "Aceptar");
@@ -509,65 +469,28 @@ $('.colorf').click(function(){
   var obj = canvas.getActiveObject();
   if(canvas.getActiveObject())
   if(obj.get('type')=='text'){
-
   if(estado==0){
-        $(".colorf").attr('src','img/colortexto/fondoamarillo.png');
-        canvas.getActiveObject().setTextBackgroundColor("#FFF700");
-
-        canvas.renderAll();
+        colorFondo('img/colortexto/fondoamarillo.png',"#FFF700");
         estado=estado+1;
-        console.log("estado:"+estado);
     }else if(estado==1){
-        $(".colorf").attr('src','img/colortexto/fondoverde.png');
-        canvas.getActiveObject().setTextBackgroundColor("#78FF00");
-        canvas.renderAll();
+        colorFondo('img/colortexto/fondoverde.png',"#78FF00");
         estado=estado+1;
-    console.log("estado2:"+estado);
-    
-        
-    
     }else if(estado==2){
-        $(".colorf").attr('src','img/colortexto/fondorojo.png');
-        canvas.getActiveObject().setTextBackgroundColor("#FF0000");
-        canvas.renderAll();
+        colorFondo('img/colortexto/fondorojo.png',"#FF0000");
         estado=estado+1;
-    console.log("estado2:"+estado);
-    
-        
     }else if(estado==3){
-        $(".colorf").attr('src','img/colortexto/fondomorado.png');
-        canvas.getActiveObject().setTextBackgroundColor("#D500FF");
-        canvas.renderAll();
+        colorFondo('img/colortexto/fondomorado.png',"#D500FF");
         estado=estado+1;
-    console.log("estado2:"+estado);
-    
-        
     }else if(estado==4){
-        $(".colorf").attr('src','img/colortexto/fondorosado.png');
-        canvas.getActiveObject().setTextBackgroundColor("#FF00D4");
-        canvas.renderAll();
+        colorFondo('img/colortexto/fondorosado.png',"#FF00D4");
         estado=estado+1;
-    
-    
-        
-    }else if(estado==5){
-        $(".colorf").attr('src','img/colortexto/colorftexto.png');
-          canvas.getActiveObject().setTextBackgroundColor("#FFFFFF");
-          canvas.renderAll();
-         estado=estado+1;
-    
-   
-        
+    }else if(estado==5){ 
+        colorFondo('img/colortexto/colorftexto.png',"#FFFFFF");
+         estado=estado+1; 
     }else if(estado==6){
-        $(".colorf").attr('src','img/colortexto/fondonegro.png');
-          canvas.getActiveObject().setTextBackgroundColor("#000000");
-          canvas.renderAll();
+        colorFondo('img/colortexto/fondonegro.png',"#000000");
           estado=0;
-    
-   
-        
-    }
-        
+    } 
   }else{
       navigator.notification.alert("Seleccione un texto para colorear. ", alertCallback, "Color para fondo", "Aceptar");
       function alertCallback() {
@@ -583,6 +506,17 @@ $('.colorf').click(function(){
     }
   
 });
+
+function colorFondo(img,colorfondo){
+  $(".colorf").attr('src',img);
+  canvas.getActiveObject().setTextBackgroundColor(colorfondo);
+  canvas.renderAll();
+}
+function colorTexto(img,colortexto){
+  $(".colort").attr('src',img);
+  canvas.getActiveObject().setFill(colortexto);
+  canvas.renderAll();
+}
 
 $.ajax({
    type: "POST",
