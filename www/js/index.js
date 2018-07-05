@@ -579,7 +579,7 @@ function agregarGlobos(){
   }
   document.getElementById('textoglobo').value="";
 }
-
+/*
 $(".agregafondo" ).on( "click", function() {
   var fondo=document.getElementById("image").src=this.src; 
   if (conexion==0) {
@@ -593,6 +593,7 @@ $(".agregafondo" ).on( "click", function() {
   })
   }
 });
+*/
 /*
 
 f = fabric.Image.filters;
