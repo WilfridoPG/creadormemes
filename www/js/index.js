@@ -507,7 +507,7 @@ $.ajax({
     $('#mostrarg').html("<li><a class='thumbnail'><img src='img/globos/1.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/2.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/3.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/5.png'  class='agregaglobo' ></a></li>");
   conexion=0;
   });
-
+/*
 const toDataURL = url => fetch(url)
   .then(response => response.blob())
   .then(blob => new Promise((resolve, reject) => {
@@ -578,7 +578,7 @@ function agregarGlobos(){
     //document.getElementById('text-cont').value=document.getElementById('textoglobo').value;
   }
   document.getElementById('textoglobo').value="";
-}
+}*/
 /*
 $(".agregafondo" ).on( "click", function() {
   var fondo=document.getElementById("image").src=this.src; 
