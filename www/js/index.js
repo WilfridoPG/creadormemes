@@ -598,7 +598,7 @@ $(".agregafondo" ).on( "click", function() {
 f = fabric.Image.filters;
 function GenerarMeme(fondos){
   $("#editarfondo").prop('disabled', false);
-  fbandera=1;
+  //fbandera=1;
   ObjetoImagen = new Image();
   //imgObj.src = url + '?' + new Date().getTime();
   ObjetoImagen.crossOrigin = 'anonymous'; 
@@ -616,6 +616,7 @@ function GenerarMeme(fondos){
       ObjetoImagen.height = canvas.height;
       canvas.setBackgroundImage(ObjetoImagen);
       canvas.renderAll();
+      /*
       function removefilter(){
         ObjetoImagen.filters = []; 
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
@@ -651,6 +652,7 @@ function GenerarMeme(fondos){
         // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
       });
+      */
       $('.Brillo').on('click', function() {
           //var obj = canvas.getActiveObject();
         ObjetoImagen.filters[5] = new f.Brightness({brightness: parseInt($('#brillorango').val(),10)});
