@@ -540,7 +540,7 @@ $(".agregapersonaje" ).on( "click", function() {
   } 
   */  
 });
-/*
+
 $(".agregaglobo" ).on( "click", function() {
   document.getElementById("image").src=this.src;
   $("#modalglobo").modal();
@@ -569,6 +569,8 @@ function agregarGlobos(){
       });
       canvas.add(texto);
     };
+    ObjetoImagen.src =document.getElementById("image").src; 
+    /*
     if (conexion==0) {
       ObjetoImagen.src =document.getElementById("image").src; 
     }else{
@@ -577,7 +579,7 @@ function agregarGlobos(){
     //console.log('RESULT:', dataUrl)
      ObjetoImagen.src = dataUrl; 
     })
-    }
+    }*/
   //ObjetoImagen.src = document.getElementById("image").src; 
     //document.getElementById('text-cont').value=document.getElementById('textoglobo').value;
   }
@@ -586,6 +588,8 @@ function agregarGlobos(){
 
 $(".agregafondo" ).on( "click", function() {
   var fondo=document.getElementById("image").src=this.src; 
+  GenerarMeme(fondo);
+  /*
   if (conexion==0) {
   GenerarMeme(fondo);
   }else
@@ -595,10 +599,9 @@ $(".agregafondo" ).on( "click", function() {
     //console.log('RESULT:', dataUrl)
     GenerarMeme(dataUrl);    
   })
-  }
+  }*/
+
 });
-*/
-/*
 
 f = fabric.Image.filters;
 function GenerarMeme(fondos){
@@ -621,7 +624,7 @@ function GenerarMeme(fondos){
       ObjetoImagen.height = canvas.height;
       canvas.setBackgroundImage(ObjetoImagen);
       canvas.renderAll();
-      /*
+      
       function removefilter(){
         ObjetoImagen.filters = []; 
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
@@ -705,4 +708,4 @@ function GenerarMeme(fondos){
   };
     
 };
-*/
+
