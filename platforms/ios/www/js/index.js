@@ -593,7 +593,7 @@ $(".agregafondo" ).on( "click", function() {
   })
   }
 });
-
+/*
 
 f = fabric.Image.filters;
 function GenerarMeme(fondos){
@@ -652,7 +652,7 @@ function GenerarMeme(fondos){
         // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
       });
-      */
+      
       $('.Brillo').on('click', function() {
           //var obj = canvas.getActiveObject();
         ObjetoImagen.filters[5] = new f.Brightness({brightness: parseInt($('#brillorango').val(),10)});
@@ -700,4 +700,4 @@ function GenerarMeme(fondos){
   };
     
 };
-
+*/
