@@ -468,7 +468,7 @@ function colorTexto(img,colortexto){
   canvas.getActiveObject().setFill(colortexto);
   canvas.renderAll();
 }
-
+var conexion=0;
 $.ajax({
    type: "POST",
    dataType: "json",
@@ -485,9 +485,9 @@ $.ajax({
     var globos;
     $.each(result, function(i,filename) {
         var letra =filename.charAt(0);
-        if (letra=="f") {
+       if (letra=="f") {
             fondos+="<li><a class='thumbnail'><img style='width:100px;' src='https://ponchisponchis.com/Appmeme/img/"+ filename +"' class='agregafondo' ></a></li>"; 
-        } 
+         }
         if (letra=="p") {
             personajes+="<li><a class='thumbnail'><img src='https://ponchisponchis.com/Appmeme//img/"+ filename +"' class='agregapersonaje resize-image' ></a></li>";            
          }
@@ -498,14 +498,204 @@ $.ajax({
      $('#mostrarf').html(fondos);
      $('#mostrarp').html(personajes);
      $('#mostrarg').html(globos);
+     conexion=1;
    },
   }).fail(function() {
     $('.estado').hide();
     $('#mostrarf').html("<li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/verdeclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/azulclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/amarilloclaro.png'  class='agregafondo' ></a></li><li><a class='thumbnail'><img  style='width:100px;' src='img/fondos/blanco.png'  class='agregafondo' ></a></li>");
     $('#mostrarp').html("<li><a class='thumbnail'><img  src='img/personajes/PPRoger Federer.png'  class='agregapersonaje' ></a></li><li><a class='thumbnail'><img  src='img/personajes/PPBARACK OBAMA.png'  class='agregapersonaje' ></a></li>");
     $('#mostrarg').html("<li><a class='thumbnail'><img src='img/globos/1.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/2.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/3.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/5.png'  class='agregaglobo' ></a></li>");
+  conexion=0;
   });
 
+const toDataURL = url => fetch(url)
+  .then(response => response.blob())
+  .then(blob => new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onloadend = () => resolve(reader.result)
+    reader.onerror = reject
+    reader.readAsDataURL(blob)
+  }))
+
+$(".agregapersonaje" ).on( "click", function() {
+    var personaje=document.getElementById("image").src=this.src;
+    var ObjetoImagen = new Image();
+    ObjetoImagen.crossOrigin = 'anonymous';
+    ObjetoImagen.onload = function(){     
+    var f_img = new fabric.Image(ObjetoImagen);
+    canvas.add(f_img.set({ left:canvas.width/1.3, top:canvas.height/2, angle:0, cornerStyle: 'circle', cornerSize: 20, }).scale(0.35));
+  }
+  if (conexion==0) {
+    ObjetoImagen.src = personaje; 
+  }else
+  {
+  toDataURL(personaje)
+  .then(dataUrl => {
+    //console.log('RESULT:', dataUrl)
+     ObjetoImagen.src = dataUrl; 
+  })  
+  }   
+});
+
+$(".agregaglobo" ).on( "click", function() {
+  document.getElementById("image").src=this.src;
+  $("#modalglobo").modal();
+});
+
+function agregarGlobos(){ 
+  var cantidad;
+  var textglobo = document.getElementById('textoglobo').value;
+  if (textglobo) {
+    var valor= $('input:radio[name=optradio]:checked').val();
+    if (valor=="1") {
+      cantidad=canvas.width-100;
+    }else  
+    cantidad=10;
+    var ObjetoImagen = new Image();
+    ObjetoImagen.onload = function(){ 
+      var f_img = new fabric.Image(ObjetoImagen);
+      canvas.add(f_img.set({ left:cantidad, top:100, angle:0, cornerStyle: 'circle',cornerSize: 20, }).scale(0.15));  
+      var texto = new fabric.Text(textglobo, {
+        padding:0,
+        fontSize:f_img.getBoundingRectHeight() /8,
+        left:cantidad,
+        cornerStyle: 'circle',
+        cornerSize: 20,
+        top:100
+      });
+      canvas.add(texto);
+    };
+    if (conexion==0) {
+      ObjetoImagen.src =document.getElementById("image").src; 
+    }else{
+      toDataURL(document.getElementById("image").src)
+  .then(dataUrl => {
+    //console.log('RESULT:', dataUrl)
+     ObjetoImagen.src = dataUrl; 
+    })
+    }
+  //ObjetoImagen.src = document.getElementById("image").src; 
+    //document.getElementById('text-cont').value=document.getElementById('textoglobo').value;
+  }
+  document.getElementById('textoglobo').value="";
+}
+
+$(".agregafondo" ).on( "click", function() {
+  var fondo=document.getElementById("image").src=this.src; 
+  if (conexion==0) {
+  GenerarMeme(fondo);
+  }else
+  {
+  toDataURL(fondo)
+  .then(dataUrl => {
+    //console.log('RESULT:', dataUrl)
+    GenerarMeme(dataUrl);    
+  })
+  }
+});
 
 
+f = fabric.Image.filters;
+function GenerarMeme(fondos){
+  $("#editarfondo").prop('disabled', false);
+  fbandera=1;
+  ObjetoImagen = new Image();
+  //imgObj.src = url + '?' + new Date().getTime();
+  ObjetoImagen.crossOrigin = 'anonymous'; 
+  //ObjetoImagen.onerror = function() { console.log("cross-origin image load error"); }
+  ObjetoImagen.src = fondos;
+  original.src=  ObjetoImagen.src; 
+  filtro.src=  ObjetoImagen.src;
+  filtro1.src=  ObjetoImagen.src;
+  filtro2.src=  ObjetoImagen.src;
+  filtro3.src=  ObjetoImagen.src;
+        //filtro4.src=document.getElementById("image").src;
+  ObjetoImagen.onload = function(){
+    var f_img = new fabric.Image.fromURL(ObjetoImagen.src, function( ObjetoImagen ){                
+      ObjetoImagen.width = canvas.width;
+      ObjetoImagen.height = canvas.height;
+      canvas.setBackgroundImage(ObjetoImagen);
+      canvas.renderAll();
+      function removefilter(){
+        ObjetoImagen.filters = []; 
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      }
+      $('#original').click(function(){
+        removefilter();
+      });
+      $('#filtro').click(function(){      
+        removefilter();
+        ObjetoImagen.filters.push(new fabric.Image.filters.Grayscale());
+        // apply filters and re-render canvas when done
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });
+      $('#filtro1').click(function(){
+        removefilter();
+        ObjetoImagen.filters.push(new fabric.Image.filters.Invert());
+       // apply filters and re-render canvas when done
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas)); 
+      });
+      $('#filtro2').click(function(){
+        removefilter();
+        ObjetoImagen.filters.push(new fabric.Image.filters.Sepia2());
+        // apply filters and re-render canvas when done
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });
+      $('#filtro3').click(function(){
+        removefilter();
+        ObjetoImagen.filters.push(new fabric.Image.filters.Convolute({
+        matrix:[ 1/9, 1/9, 1/9,
+               1/9, 1/9, 1/9,
+                1/9, 1/9, 1/9 ]
+        }));
+        // apply filters and re-render canvas when done
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });
+      $('.Brillo').on('click', function() {
+          //var obj = canvas.getActiveObject();
+        ObjetoImagen.filters[5] = new f.Brightness({brightness: parseInt($('#brillorango').val(),10)});
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });
+      $('.Combinar').on('click', function() {
+          //var obj = canvas.getActiveObject();
+        ObjetoImagen.filters[5] = new f.Brightness({brightness: parseInt($('#brillorango').val(),10)});
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });
+      $('#brillorango').on('change', function() {
+        //var obj = canvas.getActiveObject();
+        ObjetoImagen.filters[5]['brightness'] = parseInt($(this).val(),10);
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas)); 
+      });                
+      $('.Transparencia').on('click', function() {
+        ObjetoImagen.filters[7] = new f.GradientTransparency({threshold: parseInt($('#transparenciarango').val(),10)});
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });
+      $('#transparenciarango').on('change', function() {
+        ObjetoImagen.filters[7]['threshold'] = parseInt($(this).val(),10);
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas)); 
+      }); 
+      $('.Pixel').on('click', function() {
+        ObjetoImagen.filters[8]= new f.Pixelate({ blocksize:parseInt($('#pixelrango').val(),10)});
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });
+      $('#pixelrango').on('change', function() {
+        ObjetoImagen.filters[8]['blocksize']=parseInt($(this).val(),10);
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });
+      $('.Opacidad').on('click', function() {
+        ObjetoImagen.filters[12] = new f.Tint({opacity: parseFloat($('#opacidadrango').val())});
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));                   
+       //ObjetoImagen.filters[7] = new f.Saturation({saturation: parseFloat($('#tint-opacity').val())});
+        //ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));                    
+      });
+      $('#opacidadrango').on('change', function() {                  
+        ObjetoImagen.filters[12]['opacity']=parseFloat($(this).val());
+        //ObjetoImagen.filters[7]['saturation']=parseFloat($(this).val());
+       //applyFilterValue(6, 'contrast', parseFloat(this.value));
+        ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+      });              
+    });
+  };
+    
+};
 

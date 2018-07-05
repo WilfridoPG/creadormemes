@@ -209,6 +209,25 @@
                     </div>
                 </div>
             </div>
+            <div class="modal" id="modalglobo">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Agregar texto al globo</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <label class="radio-inline"><input type="radio" name="optradio"  value="2" checked >Izquierda</label>
+                            <label class="radio-inline"><input type="radio"  name="optradio" value="1">Derecha</label>
+                            <textarea class="form-control" rows="2" id="textoglobo"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="agregarGlobos()"  class="btn btn-default" data-dismiss="modal">Aceptar</button>
+                            <button type="button"  class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>  
+                </div>
+            </div>
 
             </center>
             <div class="card-footer"> 
@@ -229,6 +248,17 @@
                 width:$("#contenedor").width(),
                 height:$("#contenedor").height()
             });
+            var sitio = new fabric.Text("ponchisponchis.com", {
+                fontSize: 10,  
+                left:canvas.width-120,
+                top: canvas.height-20,
+                textAlign:'left',
+                cornerStyle: 'circle',
+                cornerSize: 20,
+                selectable:false,
+                selection :false,
+            });
+            canvas.add(sitio);
         </script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
