@@ -507,7 +507,7 @@ $.ajax({
     $('#mostrarg').html("<li><a class='thumbnail'><img src='img/globos/1.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/2.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/3.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/5.png'  class='agregaglobo' ></a></li>");
   conexion=0;
   });
-
+/*
 const toDataURL = url => fetch(url)
   .then(response => response.blob())
   .then(blob => new Promise((resolve, reject) => {
@@ -516,7 +516,7 @@ const toDataURL = url => fetch(url)
     reader.onerror = reject
     reader.readAsDataURL(blob)
   }))
-
+*/
 $(".agregapersonaje" ).on( "click", function() {
     var personaje=document.getElementById("image").src=this.src;
     var ObjetoImagen = new Image();
@@ -525,7 +525,9 @@ $(".agregapersonaje" ).on( "click", function() {
     var f_img = new fabric.Image(ObjetoImagen);
     canvas.add(f_img.set({ left:canvas.width/1.3, top:canvas.height/2, angle:0, cornerStyle: 'circle', cornerSize: 20, }).scale(0.35));
   }
-  if (conexion==0) {
+
+  ObjetoImagen.src = personaje; 
+  /*if (conexion==0) {
     ObjetoImagen.src = personaje; 
   }else
   {
@@ -533,8 +535,10 @@ $(".agregapersonaje" ).on( "click", function() {
   .then(dataUrl => {
     //console.log('RESULT:', dataUrl)
      ObjetoImagen.src = dataUrl; 
-  })  
-  }   
+  }) 
+
+  } 
+  */  
 });
 /*
 $(".agregaglobo" ).on( "click", function() {
