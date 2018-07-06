@@ -605,7 +605,7 @@ $(".agregafondo" ).on( "click", function() {
 
 f = fabric.Image.filters;
 function GenerarMeme(fondos){
-  $("#editarfondo").prop('disabled', false);
+  //$(".Editar").prop('disabled', false);
   //fbandera=1;
   ObjetoImagen = new Image();
   //imgObj.src = url + '?' + new Date().getTime();
@@ -637,18 +637,21 @@ function GenerarMeme(fondos){
         ObjetoImagen.filters.push(new fabric.Image.filters.Grayscale());
         // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+        canvas.add(ObjetoImagen);
       });
       $('#filtro1').click(function(){
         removefilter();
         ObjetoImagen.filters.push(new fabric.Image.filters.Invert());
        // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas)); 
+        canvas.add(ObjetoImagen);
       });
       $('#filtro2').click(function(){
         removefilter();
         ObjetoImagen.filters.push(new fabric.Image.filters.Sepia2());
         // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+        canvas.add(ObjetoImagen);
       });
       $('#filtro3').click(function(){
         removefilter();
@@ -659,6 +662,7 @@ function GenerarMeme(fondos){
         }));
         // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+        canvas.add(ObjetoImagen);
       });
       
       $('.Brillo').on('click', function() {
@@ -666,6 +670,7 @@ function GenerarMeme(fondos){
         ObjetoImagen.filters[5] = new f.Brightness({brightness: parseInt($('#brillorango').val(),10)});
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
       });
+       
       $('.Combinar').on('click', function() {
           //var obj = canvas.getActiveObject();
         ObjetoImagen.filters[5] = new f.Brightness({brightness: parseInt($('#brillorango').val(),10)});
@@ -706,6 +711,6 @@ function GenerarMeme(fondos){
       });              
     });
   };
-    
 };
+    
 

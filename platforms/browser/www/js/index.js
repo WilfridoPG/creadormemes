@@ -507,7 +507,7 @@ $.ajax({
     $('#mostrarg').html("<li><a class='thumbnail'><img src='img/globos/1.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/2.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/3.png'  class='agregaglobo' ></a></li><li><a class='thumbnail'><img  src='img/globos/5.png'  class='agregaglobo' ></a></li>");
   conexion=0;
   });
-
+/*
 const toDataURL = url => fetch(url)
   .then(response => response.blob())
   .then(blob => new Promise((resolve, reject) => {
@@ -516,7 +516,7 @@ const toDataURL = url => fetch(url)
     reader.onerror = reject
     reader.readAsDataURL(blob)
   }))
-
+*/
 $(".agregapersonaje" ).on( "click", function() {
     var personaje=document.getElementById("image").src=this.src;
     var ObjetoImagen = new Image();
@@ -525,7 +525,9 @@ $(".agregapersonaje" ).on( "click", function() {
     var f_img = new fabric.Image(ObjetoImagen);
     canvas.add(f_img.set({ left:canvas.width/1.3, top:canvas.height/2, angle:0, cornerStyle: 'circle', cornerSize: 20, }).scale(0.35));
   }
-  if (conexion==0) {
+
+  ObjetoImagen.src = personaje; 
+  /*if (conexion==0) {
     ObjetoImagen.src = personaje; 
   }else
   {
@@ -533,8 +535,10 @@ $(".agregapersonaje" ).on( "click", function() {
   .then(dataUrl => {
     //console.log('RESULT:', dataUrl)
      ObjetoImagen.src = dataUrl; 
-  })  
-  }   
+  }) 
+
+  } 
+  */  
 });
 
 $(".agregaglobo" ).on( "click", function() {
@@ -565,6 +569,8 @@ function agregarGlobos(){
       });
       canvas.add(texto);
     };
+    ObjetoImagen.src =document.getElementById("image").src; 
+    /*
     if (conexion==0) {
       ObjetoImagen.src =document.getElementById("image").src; 
     }else{
@@ -573,15 +579,17 @@ function agregarGlobos(){
     //console.log('RESULT:', dataUrl)
      ObjetoImagen.src = dataUrl; 
     })
-    }
+    }*/
   //ObjetoImagen.src = document.getElementById("image").src; 
     //document.getElementById('text-cont').value=document.getElementById('textoglobo').value;
   }
   document.getElementById('textoglobo').value="";
 }
-/*
+
 $(".agregafondo" ).on( "click", function() {
   var fondo=document.getElementById("image").src=this.src; 
+  GenerarMeme(fondo);
+  /*
   if (conexion==0) {
   GenerarMeme(fondo);
   }else
@@ -591,14 +599,13 @@ $(".agregafondo" ).on( "click", function() {
     //console.log('RESULT:', dataUrl)
     GenerarMeme(dataUrl);    
   })
-  }
+  }*/
+
 });
-*/
-/*
 
 f = fabric.Image.filters;
 function GenerarMeme(fondos){
-  $("#editarfondo").prop('disabled', false);
+  //$(".Editar").prop('disabled', false);
   //fbandera=1;
   ObjetoImagen = new Image();
   //imgObj.src = url + '?' + new Date().getTime();
@@ -617,7 +624,7 @@ function GenerarMeme(fondos){
       ObjetoImagen.height = canvas.height;
       canvas.setBackgroundImage(ObjetoImagen);
       canvas.renderAll();
-      /*
+      
       function removefilter(){
         ObjetoImagen.filters = []; 
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
@@ -630,18 +637,21 @@ function GenerarMeme(fondos){
         ObjetoImagen.filters.push(new fabric.Image.filters.Grayscale());
         // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+        canvas.add(ObjetoImagen);
       });
       $('#filtro1').click(function(){
         removefilter();
         ObjetoImagen.filters.push(new fabric.Image.filters.Invert());
        // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas)); 
+        canvas.add(ObjetoImagen);
       });
       $('#filtro2').click(function(){
         removefilter();
         ObjetoImagen.filters.push(new fabric.Image.filters.Sepia2());
         // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+        canvas.add(ObjetoImagen);
       });
       $('#filtro3').click(function(){
         removefilter();
@@ -652,6 +662,7 @@ function GenerarMeme(fondos){
         }));
         // apply filters and re-render canvas when done
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
+        canvas.add(ObjetoImagen);
       });
       
       $('.Brillo').on('click', function() {
@@ -659,6 +670,7 @@ function GenerarMeme(fondos){
         ObjetoImagen.filters[5] = new f.Brightness({brightness: parseInt($('#brillorango').val(),10)});
         ObjetoImagen.applyFilters(canvas.renderAll.bind(canvas));
       });
+       
       $('.Combinar').on('click', function() {
           //var obj = canvas.getActiveObject();
         ObjetoImagen.filters[5] = new f.Brightness({brightness: parseInt($('#brillorango').val(),10)});
@@ -699,6 +711,6 @@ function GenerarMeme(fondos){
       });              
     });
   };
-    
 };
-*/
+    
+
